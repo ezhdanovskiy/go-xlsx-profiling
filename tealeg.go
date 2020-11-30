@@ -44,3 +44,7 @@ func (e *TealegConvertor) Save(path string) error {
 	}
 	return nil
 }
+
+func (e *TealegConvertor) Close() error {
+	return nil
+}

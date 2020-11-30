@@ -20,6 +20,7 @@ const (
 	excelizeLibName   = "excelize"
 	excelizeV2LibName = "excelizeV2"
 	tealegLibName     = "tealeg"
+	plandemLibName    = "plandem"
 )
 
 func usage() {
@@ -28,7 +29,8 @@ func usage() {
     - %s
     - %s
     - %s
-`, os.Args[0], excelizeLibName, excelizeV2LibName, tealegLibName)
+    - %s
+`, os.Args[0], excelizeLibName, excelizeV2LibName, tealegLibName, plandemLibName)
 }
 
 func main() {
@@ -54,6 +56,7 @@ func main() {
 type converter interface {
 	AddRow([]string) error
 	Save(path string) error
+	Close() error
 }
 
 func csv2xlsx(csvPath, delimiter, libName string) error {
@@ -76,9 +79,13 @@ func csv2xlsx(csvPath, delimiter, libName string) error {
 		conv = NewExcelizeV2Convertor()
 	case tealegLibName:
 		conv = NewTealegConvertor()
+	case plandemLibName:
+		conv = NewPlandemConvertor()
 	default:
 		return fmt.Errorf("unknown lib name %q", *libNameFlag)
 	}
+
+	defer conv.Close()
 
 	xlsxPath := csvPath + "." + libName + ".xlsx"
 	err = convert(reader, conv, xlsxPath)

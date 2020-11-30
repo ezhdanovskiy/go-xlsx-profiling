@@ -43,3 +43,7 @@ func (e ExcelizeConvertor) Save(path string) error {
 	}
 	return nil
 }
+
+func (e ExcelizeConvertor) Close() error {
+	return nil
+}

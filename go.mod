@@ -8,6 +8,7 @@ require (
 	github.com/frankban/quicktest v1.11.2 // indirect
 	github.com/google/go-cmp v0.5.4 // indirect
 	github.com/kr/text v0.2.0 // indirect
+	github.com/plandem/xlsx v1.0.4
 	github.com/tealeg/xlsx/v3 v3.2.3
 	github.com/xuri/efp v0.0.0-20201016154823-031c29024257 // indirect
 	golang.org/x/crypto v0.0.0-20201124201722-c8d3bf9c5392 // indirect
