@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/tealeg/xlsx"
+	"github.com/tealeg/xlsx/v3"
 )
 
 func NewTealegConvertor() *TealegConvertor {

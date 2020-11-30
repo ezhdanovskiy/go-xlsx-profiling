@@ -17,8 +17,9 @@ var (
 )
 
 const (
-	excelizeLibName = "excelize"
-	tealegLibName   = "tealeg"
+	excelizeLibName   = "excelize"
+	excelizeV2LibName = "excelizeV2"
+	tealegLibName     = "tealeg"
 )
 
 func usage() {
@@ -26,7 +27,8 @@ func usage() {
   Lib names:
     - %s
     - %s
-`, os.Args[0], excelizeLibName, tealegLibName)
+    - %s
+`, os.Args[0], excelizeLibName, excelizeV2LibName, tealegLibName)
 }
 
 func main() {
@@ -70,6 +72,8 @@ func csv2xlsx(csvPath, delimiter, libName string) error {
 	switch *libNameFlag {
 	case excelizeLibName:
 		conv = NewExcelizeConvertor()
+	case excelizeV2LibName:
+		conv = NewExcelizeV2Convertor()
 	case tealegLibName:
 		conv = NewTealegConvertor()
 	default:
