@@ -23,10 +23,13 @@ type ExcelizeConvertor struct {
 
 func (e *ExcelizeConvertor) AddRow(row []string) error {
 	cell := fmt.Sprintf("A%d", e.rowIndex)
-	err := e.xlsxFile.SetSheetRow(e.sheetName, cell, &row)
-	if err != nil {
-		return fmt.Errorf("failed to SetSheetRow: %w", err)
-	}
+
+	e.xlsxFile.SetSheetRow(e.sheetName, cell, &row) // for v1.4.1
+
+	//err := e.xlsxFile.SetSheetRow(e.sheetName, cell, &row) // for v2.3.1
+	//if err != nil {
+	//	return fmt.Errorf("failed to SetSheetRow: %w", err)
+	//}
 
 	e.rowIndex++
 	return nil

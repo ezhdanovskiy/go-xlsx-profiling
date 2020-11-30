@@ -16,4 +16,6 @@
 
 *.csv
 *.xlsx
-go-xlsx-profiling
+go-xlsx-profiling*
+.idea
+vendor
